@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Expresiones Regulares</title>
+</head>
+<body>
+	<script>
+		/*var cadena = "Este es un video tutorial para mis Alumnos y profesores de programacion";
+		var er1 = new RegExp("(\balumn[oa]{1}s?\b | profesor(as?|es)?p)");
+		var er2 = /(\balumn[oa]{1}s?\b | profesor(as?|es)?p)/ig;
+		var archivo = "foto007";
+		var er3 = /foto00[0-367]/;
+		var rta = er2.test(cadena);
+		let porque = cadena.match(er2);
+		document.write(rta);
+		document.write(' ');
+		document.write(porque);*/
+
+		/*function isPlate(plate){
+			var er = /[A-Z]{3}[0-9]{3}/;
+			return er.test(plate);
+        }
+		
+		document.write(isPlate("mvv387"));
+        */
+
+		var  cadena = "Hola+mundo+como+estas";
+
+		var cadena2 = "partir-la-cadena";
+		var cadena3 = "este-es+otro*ejemplo";
+		var plate1 = "Iba en un AAA123 y después en un BBB987";
+		var plate2 ="AAA123";
+		var plate3 = "no coincide";
+        var string1 = "Hola [nombre]";
+        var string2 = "Hola [nombre], tu saldo es [saldo]";
+        var string3 = "Hola mundo";
+        var obj1 = { nombre: "German" };
+        var obj2 = { nombre: "German", saldo: 12000 };
+        var obj3 = {};
+        var array = [];
+        function split(cadena){
+         var result = [""];
+         result = cadena.split(/[-\+\*]/);
+         return result;
+        };
+
+        function plates(cadena){
+         var result = [];
+         result = cadena.match(/[A-Z]{3}[0-9]{3}/gi);
+         if (result === null){
+         	result = [];
+         }
+
+         return result;
+        };
+
+		//console.log(split(''));
+		 //console.log(plates(plate1));
+
+       function template(string, obj){
+         var propertiesBr = [];
+         var properties = [];
+
+         if (string.match(/\[(.*?)\]/g) != null){
+         	propertiesBr = string.match(/\[(.*?)\]/g).toString();
+         }else{
+         	propertiesBr = string;
+         }
+
+       	 properties = propertiesBr.replace(/(\[|\])/g,"").split(",");
+       	 propertiesBr = propertiesBr.split(",");
+
+         for (var i = 0; i < properties.length; i++){
+       	    if(properties[i] in obj){
+       	    	string = string.replace(propertiesBr[i], obj[properties[i]]);
+       	    }else if (propertiesBr[i].search(/\[/) != -1){
+       	    	string = string.replace(propertiesBr[i], "undefined");
+       	    }
+       	 }
+
+
+         return string;
+       };
+
+      console.log(template(string3, obj1));
+
+
+
+	</script>
+</body>
+</html>
